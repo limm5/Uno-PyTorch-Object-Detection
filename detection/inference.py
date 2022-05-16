@@ -51,6 +51,7 @@ for i in range(len(test_images)):
     start_time = time.time()
     with torch.no_grad():
         outputs = model(image.to(DEVICE))        
+        print(outputs)
     end_time = time.time()    
     # get the current fps
     fps = 1 / (end_time - start_time)

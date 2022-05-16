@@ -16,12 +16,18 @@ def create_model(num_classes):
     else:
         raise Exception("Invalid BACKBONE_TYPE")
     
+    count= 0
     if FREEZE_BACKBONE:
-        for param in model.parameters():
-            param.requires_grad = False        
+        for param in model.backbone.parameters():            
+            count+=1
+            param.requires_grad = False            
     
     # get the number of input features 
     in_features = model.roi_heads.box_predictor.cls_score.in_features
     # define a new head for the detector with required number of classes
     model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes) 
     return model
+
+
+# if __name__ == '__main__':
+#     create_model(2)
