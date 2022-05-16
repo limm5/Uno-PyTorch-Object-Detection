@@ -22,6 +22,8 @@ CLASSES = [
     '8', '12', '1', '3'
 ]
 
+FREEZE_BACKBONE = True
+
 NUM_CLASSES = len(CLASSES)
 
 # whether to visualize images after crearing the data loaders

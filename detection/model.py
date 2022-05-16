@@ -1,9 +1,18 @@
 import torchvision
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
+
+from config import (
+    FREEZE_BACKBONE
+)
+
 def create_model(num_classes):
     
     # load Faster RCNN pre-trained model
     model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
+    
+    if FREEZE_BACKBONE:
+        for param in model.backbone.parameters():
+            param.requires_grad = False        
     
     # get the number of input features 
     in_features = model.roi_heads.box_predictor.cls_score.in_features
