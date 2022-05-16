@@ -6,7 +6,7 @@ NUM_WORKERS = 0
 
 DEVICE = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
-RESIZE_TO = 416 # resize the image for training and transforms
+RESIZE_TO = 208 # resize the image for training and transforms; default 416
 
 # location to save model and plots
 OUT_DIR = 'outputs'
@@ -23,6 +23,7 @@ CLASSES = [
 ]
 
 FREEZE_BACKBONE = True
+BACKBONE_TYPE = "mobilenetv3" # resnet50 / mobilenetv3
 
 NUM_CLASSES = len(CLASSES)
 
