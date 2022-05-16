@@ -1,7 +1,7 @@
 import torch
 
-BATCH_SIZE = 8 
-NUM_EPOCHS = 10
+BATCH_SIZE = 32 
+NUM_EPOCHS = 5
 NUM_WORKERS = 0
 
 DEVICE = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -12,9 +12,9 @@ RESIZE_TO = 208 # resize the image for training and transforms; default 416
 OUT_DIR = 'outputs'
 
 # training images and XML files directory
-TRAIN_DIR = '/Users/nelsonlim/Development/PyTorch Object Detection/data/Uno Cards.v1-v1.voc/train'
+TRAIN_DIR = '/content/train'
 # validation images and XML files directory
-VALID_DIR = '/Users/nelsonlim/Development/PyTorch Object Detection/data/Uno Cards.v1-v1.voc/valid'
+VALID_DIR = '/content/valid'
 
 # classes: 0 index is reserved for background
 CLASSES = [
