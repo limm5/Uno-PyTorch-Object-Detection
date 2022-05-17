@@ -10,17 +10,13 @@ def create_model(num_classes):
     # load Faster RCNN pre-trained model
 
     if BACKBONE_TYPE == "resnet50":
-        model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
+        # trainable 0 - 5
+        model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True, trainable_backbone_layers=FREEZE_BACKBONE)
     elif BACKBONE_TYPE == "mobilenetv3":        
-        model = torchvision.models.detection.fasterrcnn_mobilenet_v3_large_320_fpn(pretrained=True)
+        # trainable 0 - 6
+        model = torchvision.models.detection.fasterrcnn_mobilenet_v3_large_320_fpn(pretrained=True, trainable_backbone_layers=FREEZE_BACKBONE)
     else:
-        raise Exception("Invalid BACKBONE_TYPE")
-    
-    count= 0
-    if FREEZE_BACKBONE:
-        for param in model.backbone.parameters():            
-            count+=1
-            param.requires_grad = False            
+        raise Exception("Invalid BACKBONE_TYPE")        
     
     # get the number of input features 
     in_features = model.roi_heads.box_predictor.cls_score.in_features

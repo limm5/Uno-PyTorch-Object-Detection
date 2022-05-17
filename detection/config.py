@@ -23,7 +23,8 @@ CLASSES = [
     '8', '12', '1', '3'
 ]
 
-FREEZE_BACKBONE = True
+# https://pytorch.org/vision/stable/generated/torchvision.models.detection.fasterrcnn_mobilenet_v3_large_320_fpn.html
+FREEZE_BACKBONE = 3 # 0 - 6 
 BACKBONE_TYPE = "mobilenetv3" # resnet50 / mobilenetv3
 
 NUM_CLASSES = len(CLASSES)
